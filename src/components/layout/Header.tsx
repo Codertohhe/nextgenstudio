@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X, Search } from "lucide-react";
+import { Link } from "react-router-dom";
 import logoimg from "@/assets/logo_2.png";
 
 const Header = () => {
@@ -35,24 +36,24 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <a href="/" className="flex items-center group">
+          <Link to="/" className="flex items-center group">
             <div className="p-3 rounded-xl shadow-lg group-hover:shadow-orange-500/50 transition-all duration-300">
               <div className="h-12 w-28 sm:h-14 sm:w-32 bg-gradient-to-r from-orange-500 to-purple-600 rounded flex items-center justify-center text-white font-bold">
                 <img src={logoimg} alt="Logo" className="h-full w-full object-contain" />
               </div>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">
             {navigation.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.path}
+                to={item.path}
                 className="px-4 py-2 text-gray-300 font-medium hover:text-orange-400 transition rounded-lg hover:bg-white/5"
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
 
             {/* Search */}
@@ -104,13 +105,14 @@ const Header = () => {
         <div className="lg:hidden bg-slate-900/98 backdrop-blur-xl border-t border-white/10 animate-fadeIn">
           <nav className="flex flex-col px-6 py-4 space-y-1 max-h-[80vh] overflow-y-auto">
             {navigation.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.path}
+                to={item.path}
                 className="px-4 py-3 text-gray-300 font-medium hover:text-orange-400 hover:bg-white/5 rounded-lg transition"
+                onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
 
             {/* Mobile Search */}
